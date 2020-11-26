@@ -1,3 +1,4 @@
+const { query } = require('express');
 const express= require ('express');
 const app= express();
 
@@ -9,14 +10,15 @@ app.engine('hbs', handlebars({
     layoutsDir: __dirname + '/views/layouts',
     extname: 'hbs',
     defaultLayout: 'index',
-    }));
+    }))
 
 app.get('/',(req,res)=>{
-    res.render('main',{name: req.query.nome})
+    //console.log(req.headers)
+    res.render('main',{nome: req.query.nome, cognome: req.query.cognome, anni: req.query.anni, porta: req.headers.host.substr(10)})
 })
 
 app.get('/mare',(req,res)=>{
-    res.render('main',{layout: 'mare', name: req.query.nome})
+    res.render('main',{layout: 'mare', nome: req.query.nome, cognome: req.query.cognome, anni: req.query.anni, porta: req.headers.host.substr(10)})
 })
 
 app.listen(8000,()=>console.log('server listnening on port 8000'))
