@@ -8,7 +8,7 @@ app.use(express.static('public'))
 app.engine('hbs', handlebars({
     layoutsDir: __dirname + '/views/layouts',
     extname: 'hbs',
-    defaultLayout: 'index', //indica il layout di default
+    defaultLayout: 'index',
     }));
 
 app.get('/',(req,res)=>{
