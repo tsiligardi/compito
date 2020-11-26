@@ -16,7 +16,7 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/mare',(req,res)=>{
-    res.send(req.headers)
+    res.render('main',{layout: 'mare', name: req.query.nome})
 })
 
 app.listen(8000,()=>console.log('server listnening on port 8000'))
